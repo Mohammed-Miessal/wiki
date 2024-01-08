@@ -259,7 +259,7 @@
             <div class="mb-6 flex flex-wrap">
                 <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
                     <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init data-te-ripple-color="light">
-                        <img src="<?= URL_DIR ?>public/assets/images/marvin-meyer-SYTO3xs06fU-unsplash.jpg" class="w-full" alt="Louvre" />
+                        <img src="<?= URL_DIR ?>public/assets/images/charlesdeluvio-NVRRZ5pxX4Q-unsplash.jpg" class="w-full" alt="Louvre" />
                         <a href="#!">
                             <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
                         </a>
@@ -289,7 +289,7 @@
             <div class="mb-6 flex flex-wrap">
                 <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
                     <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init data-te-ripple-color="light">
-                        <img src="<?= URL_DIR ?>public/assets/images/marvin-meyer-SYTO3xs06fU-unsplash.jpg" class="w-full" alt="Louvre" />
+                        <img src="<?= URL_DIR ?>public/assets/images/markus-winkler-jOkfw6YfRGs-unsplash.jpg" class="w-full" alt="Louvre" />
                         <a href="#!">
                             <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
                         </a>
@@ -319,7 +319,7 @@
             <div class="mb-6 flex flex-wrap">
                 <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
                     <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init data-te-ripple-color="light">
-                        <img src="<?= URL_DIR ?>public/assets/images/marvin-meyer-SYTO3xs06fU-unsplash.jpg" class="w-full" alt="Louvre" />
+                        <img src="<?= URL_DIR ?>public/assets/images/aaron-burden-CKlHKtCJZKk-unsplash.jpg" class="w-full" alt="Louvre" />
                         <a href="#!">
                             <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
                         </a>
