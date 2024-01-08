@@ -46,10 +46,11 @@ CREATE TABLE Tag (
 -- Création de la table Wiki
 CREATE TABLE Wiki (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    title  VARCHAR(255) UNIQUE NOT NULL,
-    description longtext,
+    title  VARCHAR(50) UNIQUE NOT NULL,
+    description  VARCHAR(100)  NOT NULL,
+    content longtext,
 	date timestamp ,
-	is_archived BOOLEAN DEFAULT false,
+	status enum("Pending","Approved"),
         user_id INT,
          categorie_id INT,
     FOREIGN KEY (user_id)

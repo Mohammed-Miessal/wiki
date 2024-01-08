@@ -27,11 +27,9 @@
         <!-- aside -->
         <div class="flex flex-col items-center w-16 pb-4 overflow-auto border-r border-gray-300">
             <a class="flex items-center justify-center flex-shrink-0 w-full h-16 bg-gray-300" href="#">
-                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
+                <img src="<?= URL_DIR ?>public/assets/images/wikipedia.svg" alt="">
             </a>
-            <a class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+            <a href="#" class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" >
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
@@ -64,57 +62,31 @@
         </div>
         <!-- / aside -->
 
-        <div class="flex flex-col w-56 ">
-            <!-- <button class="relative text-sm focus:outline-none group"> -->
-            <div class="flex items-center justify-between w-full h-16 px-4 border-b ">
-                <!-- <span class="font-medium"> Dropdown </span>
-            <svg
-              class="w-4 h-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              />
-            </svg> -->
-            </div>
-            <!-- <div
-            class="absolute z-10 flex-col items-start hidden w-full pb-1 bg-white shadow-lg group-focus:flex"
-          >
-            <a class="w-full px-4 py-2 text-left hover:bg-gray-300" href="#"
-              >Menu Item 1</a
-            >
-            <a class="w-full px-4 py-2 text-left hover:bg-gray-300" href="#"
-              >Menu Item 1</a
-            >
-            <a class="w-full px-4 py-2 text-left hover:bg-gray-300" href="#"
-              >Menu Item 1</a
-            >
-          
-        </div> -->
+        <div class="flex flex-col w-30 ">
+            <button class="relative text-sm focus:outline-none group">
+                <div class="flex items-center justify-between w-full h-16 px-4 border-b ">
+                    <img src="<?= URL_DIR ?>public/assets/images/wikipedia-wordmark-fr.svg" alt="">
 
-            <!-- </button> -->
-            <div class="flex flex-col flex-grow p-4 overflow-auto">
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+                </div>
+                <div class="absolute z-10 flex-col items-start hidden w-full pb-1 bg-white shadow-lg group-focus:flex">
+                </div>
+
+            </button>
+            <div class="flex flex-col flex-grow p-4 overflow-auto ">
+                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
                     <span class="leading-none">Item 1</span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
                     <span class="leading-none">Item 2</span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
                     <span class="leading-none">Item 3</span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
                     <span class="leading-none">Item 4</span>
                 </a>
                 <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
                     <span class="leading-none">Item 5</span>
-                </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
-                    <span class="leading-none">Item 6</span>
                 </a>
                 <a class="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" href="#">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -142,6 +114,7 @@
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
                 </button>
+
                 <!-- Dropdown -->
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-2">
                     <div class="px-4 py-3" role="none">
@@ -167,36 +140,66 @@
                         </li>
                     </ul>
                 </div>
+                <!-- / Dropdown -->
             </div>
 
-            <div class="flex-grow p-6 overflow-auto bg-gray-200">
+            <!-- Main -->
+            <div class="flex-grow p-6 overflow-auto bg-gray-200 dark:bg-gray-600">
                 <div class="grid grid-cols-3 gap-6">
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-3 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-3 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
-                    <div class="h-24 col-span-3 bg-white border border-gray-300"></div>
+                    <div class="h-full col-span-3 bg-white border border-gray-300">
+                        <!-- Stats -->
+                        <main class="mt-5 p-12 ml-0 smXl:ml-64 dark:border-gray-700">
+                            <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                                Stats <span class="text-gray-500 font-lora">Wikipedia</span>
+                            </h1>
+                            <div class="cards flex flex-wrap justify-center tablet:justify-between gap-6 mb-12">
+                                <div class="bg-white dark:bg-gray-800 card border border-[#D9D9DE] dark:border-gray-700 w-full max-w-[20rem] tablet:max-w-[15rem] p-5 rounded-xl">
+                                    <div class="icon_container mb-9">
+                                        <span class="h-9 w-9 bg-[#CAFFF2] rounded-full flex justify-center items-center">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 5.83333L10 1.66667L2.5 5.83333V14.1667L10 18.3333L17.5 14.1667V5.83333ZM10 12.7778C11.5943 12.7778 12.8868 11.5341 12.8868 10C12.8868 8.46588 11.5943 7.22222 10 7.22222C8.40569 7.22222 7.11325 8.46588 7.11325 10C7.11325 11.5341 8.40569 12.7778 10 12.7778Z" stroke="#00373E" stroke-width="2" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="data_container flex justify-between">
+                                        <div class="left">
+                                            <p class="font-bold dark:text-gray-200 text-lg font-inter">XXX</p>
+                                            <p class="font-medium text-[#7F7D83] font-lora">Total Authors</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 card border border-[#D9D9DE] dark:border-gray-700 w-full max-w-[20rem] tablet:max-w-[15rem] p-5 rounded-xl">
+                                    <div class="icon_container mb-9">
+                                        <span class="h-9 w-9 bg-[#FFD58F] rounded-full flex justify-center items-center">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 5.83333L10 1.66667L2.5 5.83333V14.1667L10 18.3333L17.5 14.1667V5.83333ZM10 12.7778C11.5943 12.7778 12.8868 11.5341 12.8868 10C12.8868 8.46588 11.5943 7.22222 10 7.22222C8.40569 7.22222 7.11325 8.46588 7.11325 10C7.11325 11.5341 8.40569 12.7778 10 12.7778Z" stroke="#B27104" stroke-width="2" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="data_container flex justify-between">
+                                        <div class="left">
+                                            <p class="font-bold dark:text-gray-200 text-lg font-inter">XXX</p>
+                                            <p class="font-medium text-[#7F7D83] font-lora ">
+                                                Total Wikis
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white dark:bg-gray-800 border border-[#D9D9DE] dark:border-gray-700 rounded-xl p-8 mb-12">
+
+                            </div>
+
+                        </main>
+                        <!-- / Stats -->
+                    </div>
                 </div>
             </div>
+            <!-- / Main -->
         </div>
         <!-- Component End  -->
     </div>
