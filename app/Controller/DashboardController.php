@@ -6,6 +6,6 @@ class DashboardController
 {
     public function index()
     {
-        include "../app/View/dashboard/dashboard.php";
+        include "../app/View/dashboard/main.php";
     }
 }
