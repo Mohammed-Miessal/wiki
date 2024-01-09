@@ -22,19 +22,20 @@
 
 <body class="font-poppins text-gray-600 dark:bg-gray-900">
     <div class="flex w-screen h-screen text-gray-700">
+
         <!-- Component Start -->
 
         <!-- aside -->
         <div class="flex flex-col items-center w-16 pb-4 overflow-auto border-r border-gray-300">
-            <a class="flex items-center justify-center flex-shrink-0 w-full h-16 bg-gray-300" href="#">
+            <a href="dashboard" class="flex items-center justify-center flex-shrink-0 w-full h-16 bg-gray-300">
                 <img src="<?= URL_DIR ?>public/assets/images/wikipedia.svg" alt="">
             </a>
-            <a href="#" class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" >
+            <a href="wiki" class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
             </a>
-            <a class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+            <a href="wiki" class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
@@ -66,24 +67,23 @@
             <button class="relative text-sm focus:outline-none group">
                 <div class="flex items-center justify-between w-full h-16 px-4 border-b ">
                     <img src="<?= URL_DIR ?>public/assets/images/wikipedia-wordmark-fr.svg" alt="">
-
                 </div>
                 <div class="absolute z-10 flex-col items-start hidden w-full pb-1 bg-white shadow-lg group-focus:flex">
                 </div>
 
             </button>
             <div class="flex flex-col flex-grow p-4 overflow-auto ">
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
-                    <span class="leading-none">Item 1</span>
+                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora" href="dashboard">
+                    <span class="leading-none"> Dashboard </span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
-                    <span class="leading-none">Item 2</span>
+                <a href="wiki" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora">
+                    <span class="leading-none"> Wikis </span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
-                    <span class="leading-none">Item 3</span>
+                <a href="categorie" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora">
+                    <span class="leading-none"> Categories </span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4" href="#">
-                    <span class="leading-none">Item 4</span>
+                <a href="tag" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora">
+                    <span class="leading-none"> Tags </span>
                 </a>
                 <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
                     <span class="leading-none">Item 5</span>
@@ -136,8 +136,17 @@
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                        <form action="login/logout" method="POST">
+                            <button name="logout" class="ml-14 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
+                            </button>
+                        </form>
+
                         </li>
+                 
+
+
+
                     </ul>
                 </div>
                 <!-- / Dropdown -->
@@ -149,7 +158,7 @@
                     <div class="h-full col-span-3 bg-white border border-gray-300">
                         <!-- Stats -->
                         <main class="mt-5 p-12 ml-0 smXl:ml-64 dark:border-gray-700">
-                            <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                            <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white font-lora">
                                 Stats <span class="text-gray-500 font-lora">Wikipedia</span>
                             </h1>
                             <div class="cards flex flex-wrap justify-center tablet:justify-between gap-6 mb-12">
@@ -200,6 +209,7 @@
                 </div>
             </div>
             <!-- / Main -->
+
         </div>
         <!-- Component End  -->
     </div>
@@ -208,6 +218,7 @@
     <script src="<?= URL_DIR ?>public/assets/js/darkmode.js"></script>
     <!-- / For navbar mobile -->
     <script src="<?= URL_DIR ?>node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </body>
 
 </html>

@@ -3,8 +3,7 @@
 namespace App\Controller;
 
 session_start();
-
-class DashboardController
+class TagController
 {
     public function index()
     {
@@ -12,7 +11,7 @@ class DashboardController
             session_start();
         }
         if (isset($_SESSION['id'])) {
-            include("../app/View/dashboard/main.php");
+            include "../app/View/dashboard/tag/tag.php";
         } else {
             Controller::render("login");
         }

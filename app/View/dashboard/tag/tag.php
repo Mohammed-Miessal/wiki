@@ -39,7 +39,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
             </a>
-            <a class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href="#">
+            <a href="tag" class="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                 </svg>
@@ -74,7 +74,7 @@
             </button>
             <div class="flex flex-col flex-grow p-4 overflow-auto ">
                 <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora" href="dashboard">
-                    <span class="leading-none">Dashboard</span>
+                    <span class="leading-none"> Dashboard</span>
                 </a>
                 <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora" href="wiki">
                     <span class="leading-none"> Wikis</span>
@@ -85,7 +85,8 @@
                 <a href="tag" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 mb-4 font-lora">
                     <span class="leading-none"> Tags</span>
                 </a>
-                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+
+                <a class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300 font-lora" href="#">
                     <span class="leading-none">Item 5</span>
                 </a>
                 <a class="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" href="#">
@@ -135,15 +136,14 @@
                         <li>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
                         </li>
-
                         <li>
                             <form action="login/logout" method="POST">
                                 <button name="logout" class="ml-14 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
                                     <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
                                 </button>
                             </form>
-                        </li>
 
+                        </li>
                     </ul>
                 </div>
                 <!-- / Dropdown -->
@@ -159,7 +159,7 @@
                                 <!-- Start block -->
                                 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
                                     <h1 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white font-lora">
-                                        <span class="text-gray-500 font-lora">Wikis</span> Table
+                                        <span class="text-gray-500 font-lora">Tags</span> Table
                                     </h1>
 
                                     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -181,7 +181,7 @@
                                                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                                                             </svg>
-                                                            Add Wiki
+                                                            Add Tag
                                                         </button>
                                                     </a>
 
@@ -192,12 +192,12 @@
                                                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                            <th scope="col" class="px-4 py-3">Image</th>
+                                                            <!-- <th scope="col" class="px-4 py-3">Image</th>
                                                             <th scope="col" class="px-4 py-4"> Title</th>
-                                                            <th scope="col" class="px-4 py-4"> Description </th>
+                                                            <th scope="col" class="px-4 py-4"> Description </th> -->
 
-                                                            <th scope="col" class="px-4 py-3">DateHeure</th>
-                                                            <th scope="col" class="px-4 py-3">Status</th>
+                                                            <th scope="col" class="px-4 py-3">ID</th>
+                                                            <th scope="col" class="px-4 py-3">Name</th>
 
                                                             <th scope="col" class="px-4 py-3  text-gray-400">Actions</th>
                                                         </tr>
@@ -205,9 +205,9 @@
                                                     <tbody>
 
                                                         <tr class="border-b dark:border-gray-700">
-                                                            <td class="px-4 py-3 text-center"> </td>
+                                                            <!-- <td class="px-4 py-3 text-center"> </td>
                                                             <td class="px-4 py-3  text-center"></td>
-                                                            <td class="px-4 py-3 text-center"> </td>
+                                                            <td class="px-4 py-3 text-center"> </td> -->
                                                             <td class="px-4 py-3 text-center"></td>
                                                             <td class="px-4 py-3 text-center"></td>
                                                             <td class="px-4 py-3 text-center  overflow-visible">

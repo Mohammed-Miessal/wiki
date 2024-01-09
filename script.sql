@@ -50,7 +50,7 @@ CREATE TABLE Wiki (
     description  VARCHAR(100)  NOT NULL,
     content longtext,
 	date timestamp ,
-	status enum("Pending","Approved"),
+	status enum("Pending","Approved","Rejected"),
         user_id INT,
          categorie_id INT,
     FOREIGN KEY (user_id)
