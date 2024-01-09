@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -243,11 +242,16 @@
                     </div>
                     <span class="mx-4 text-gray-500">|</span>
                     <!-- Second   -->
-                    <select id="stadiums" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                    <select name="categorie" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                 focus:border-blue-500 block ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600
                 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
                 relative w-2/5 ">
                         <option selected disabled>Choose a Category</option>
+                        <?php
+    foreach ($categories as $categorie) {
+        echo "<option value='{$categorie['id']}'>{$categorie['name']}</option>";
+    }
+    ?>
                     </select>
                     <span class="mx-4 text-gray-500">|</span>
                 </div>
