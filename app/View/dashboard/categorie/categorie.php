@@ -207,17 +207,19 @@
                                                                 <td class="px-4 py-3 text-center"><?= $categorie['name']  ?></td>
 
                                                                 <td class="px-4 py-3 text-center  overflow-visible">
-                                                                    <button id="dropdownTopButton" data-dropdown-toggle="dropdownTop" data-dropdown-placement="top" class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
+                                                                    <button id="<?= $categorie['id'] ?>-Button" data-dropdown-toggle="<?= $categorie['id'] ?>" data-dropdown-placement="top" class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
                                                                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                                                         </svg>
                                                                     </button>
 
                                                                     <!-- Dropdown menu -->
-                                                                    <div id="dropdownTop" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopButton">
+                                                                    <div id="<?= $categorie['id'] ?>" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="<?= $categorie['id'] ?>-Button">
                                                                             <li>
-                                                                                <a href="#">
+
+                                                                                <a href="editcategorie/index/<?= $categorie['id'] ?>">
+
                                                                                     <button type="button" data-modal-target="updateProductModal" data-modal-toggle="updateProductModal" class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                                                                         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                                                             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
@@ -226,6 +228,7 @@
                                                                                         Edit
                                                                                     </button>
                                                                                 </a>
+
                                                                             </li>
 
                                                                             <li>
@@ -267,6 +270,7 @@
         <!-- Component End  -->
     </div>
 
+   
     <!-- / For dark mode -->
     <script src="<?= URL_DIR ?>public/assets/js/darkmode.js"></script>
     <!-- / For navbar mobile -->

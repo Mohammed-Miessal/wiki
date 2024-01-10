@@ -22,4 +22,9 @@ class CategorieModel extends Crud
         return $this->delete('categorie', $id);
     }
 
+    
+    public function editcategorie ($id,$data){    
+        return $this->update('categorie', $id ,$data );
+    }
+
 }

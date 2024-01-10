@@ -59,7 +59,7 @@ class Crud extends Connection
             $stmt = $this->pdo->prepare($query);
             $stmt->execute($data);
 
-            echo "Record updated successfully!";
+            // echo "Record updated successfully!";
         } catch (PDOException $e) {
             echo "Error updating record: " . $e->getMessage();
         }

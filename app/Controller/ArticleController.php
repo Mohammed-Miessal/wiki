@@ -6,6 +6,6 @@ class ArticleController
 {
     public function index()
     {
-        include "../app/View/article.php";
+        Controller::render("article");
     }
 }

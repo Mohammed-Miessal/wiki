@@ -38,4 +38,12 @@ class Controller
     }
 
 
+    // public static function getIdFromUri()
+    // {
+    //     $id = $_SERVER['REQUEST_URI'] ?? '';
+    //     $id = explode('/', trim(strtolower($id), '/'));
+    //     $id =  $id[3] ;
+    //     return $id;
+    // }
+
 }
