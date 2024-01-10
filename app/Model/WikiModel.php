@@ -29,25 +29,37 @@ class WikiModel extends Crud
         }
     }
 
+    // public function createwikis($data)
+    // {
+    //     try {
+    //         $columns = implode(", ", array_keys($data));
+    //         $values = ":" . implode(", :", array_keys($data));
+
+    //         $query = "INSERT INTO wiki ($columns) VALUES ($values)";
+    //         $stmt = $this->pdo->prepare($query);
+    //         $stmt->execute($data);
+
+    //         // echo "Record added successfully!";
+    //     } catch (PDOException $e) {
+    //         echo "Error creating record: " . $e->getMessage();
+    //     }
+    // }
+
     public function createwikis($data)
     {
-        try {
-            $columns = implode(", ", array_keys($data));
-            $values = ":" . implode(", :", array_keys($data));
-
-            $query = "INSERT INTO wiki ($columns) VALUES ($values)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute($data);
-
-            // echo "Record added successfully!";
-        } catch (PDOException $e) {
-            echo "Error creating record: " . $e->getMessage();
-        }
+        return $this->create('wiki',$data);
     }
 
     public function deletewikis($id){
         return $this->delete('wiki', $id);
 
     }
+
+    
+    public function editwikis($id, $data)
+    {
+        return $this->update('wiki', $id, $data);
+    }
+
     
 }

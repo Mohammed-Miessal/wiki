@@ -37,6 +37,15 @@ class Controller
         include $viewPath;
     }
 
+    public static function rendereditwikiViews($view, $data = [] , $data2 = [] )
+    {
+        $viewPath = "../app/View/dashboard/wiki/$view.php";
+
+        extract($data);  // Extract data array into variables
+        extract($data2);
+        include $viewPath;
+    }
+
 
     // public static function getIdFromUri()
     // {

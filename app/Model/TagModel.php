@@ -23,5 +23,10 @@ class TagModel extends Crud
 
     }
     
+    public function edittags($id, $data)
+    {
+        return $this->update('tag', $id, $data);
+    }
+
 
 }
