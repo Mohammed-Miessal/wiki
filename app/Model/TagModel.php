@@ -14,5 +14,14 @@ class TagModel extends Crud
         return $this->read('tag');
     }
     
+    public function createtags($data){
+        return $this->create('tag', $data);
+    }
+
+    public function deletetags($id){
+        return $this->delete('tag', $id);
+
+    }
+    
 
 }

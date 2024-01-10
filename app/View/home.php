@@ -248,10 +248,13 @@
                 relative w-2/5 ">
                         <option selected disabled>Choose a Category</option>
                         <?php
-    foreach ($categories as $categorie) {
-        echo "<option value='{$categorie['id']}'>{$categorie['name']}</option>";
-    }
-    ?>
+
+                        //   var_dump($categories);
+                        //     exit;
+                        foreach ($categories as $categorie) {
+                            echo "<option value='{$categorie['id']}'>{$categorie['name']}</option>";
+                        }
+                        ?>
                     </select>
                     <span class="mx-4 text-gray-500">|</span>
                 </div>

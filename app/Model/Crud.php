@@ -23,7 +23,7 @@ class Crud extends Connection
             $stmt = $this->pdo->prepare($query);
             $stmt->execute($data);
 
-            echo "Record added successfully!";
+            // echo "Record added successfully!";
         } catch (PDOException $e) {
             echo "Error creating record: " . $e->getMessage();
         }

@@ -14,4 +14,12 @@ class CategorieModel extends Crud
         return $this->read('categorie');
     }
 
+    public function createcategories($data){
+        return $this->create('categorie', $data);
+    }
+
+    public function deletecategorie ($id){    
+        return $this->delete('categorie', $id);
+    }
+
 }

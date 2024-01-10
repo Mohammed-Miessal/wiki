@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\TagModel;
+
 session_start();
 class TagController
 {
@@ -11,9 +13,23 @@ class TagController
             session_start();
         }
         if (isset($_SESSION['id'])) {
-            include "../app/View/dashboard/tag/tag.php";
+            $tags = new TagModel();
+            $tags = $tags->readtags();
+
+            Controller::rendertagViews("tag", ["tags" => $tags]);
         } else {
             Controller::render("login");
         }
+    }
+
+    public function delete($id)
+    {
+        $tag = new TagModel();
+        $tag->deletetags($id);
+
+        $redirect = URL_DIR . 'tag';
+        header("Location: $redirect");
+
+        exit();
     }
 }

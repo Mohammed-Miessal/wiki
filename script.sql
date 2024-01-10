@@ -49,7 +49,7 @@ CREATE TABLE Wiki (
     title  VARCHAR(50) UNIQUE NOT NULL,
     description  VARCHAR(100)  NOT NULL,
     content longtext,
-	date timestamp ,
+   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	status enum("Pending","Approved","Rejected"),
         user_id INT,
          categorie_id INT,

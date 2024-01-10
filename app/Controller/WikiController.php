@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\WikiModel;
+
 session_start();
 
 class WikiController
@@ -13,9 +15,24 @@ class WikiController
             session_start();
         }
         if (isset($_SESSION['id'])) {
-            include("../app/View/dashboard/wiki/wiki.php");
+            $wikis = new WikiModel();
+            $wikis = $wikis->readwikis();
+            // include("../app/View/dashboard/wiki/wiki.php");
+            Controller::renderwikiViews("wiki", ["wikis" => $wikis]);
         } else {
             Controller::render("login");
         }
     }
+
+    public function delete($id)
+    {
+        $wikis = new WikiModel();
+        $wikis->deletewikis($id);
+
+        $redirect = URL_DIR . 'wiki';
+        header("Location: $redirect");
+
+        exit();
+    }
+
 }
