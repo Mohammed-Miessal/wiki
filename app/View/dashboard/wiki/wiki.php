@@ -234,7 +234,7 @@
                                                                                 </a>
                                                                             </li>
                                                                             <li>
-                                                                                <a href="#">
+                                                                                <a href="wiki/show/<?= $wiki['id'] ?>">
                                                                                     <button type="button" data-modal-target="readProductModal" data-modal-toggle="readProductModal" class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                                                                         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                                                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />

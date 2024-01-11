@@ -182,11 +182,17 @@
 
 
 
+                                                <?php echo $wikiContent['content']; ?>
 
 
 
 
 
+                                                <!-- 
+                                                     \ 
+                                                        CONTENT 
+                                                                HERE 
+                                                                      -->
 
                                             </div>
 

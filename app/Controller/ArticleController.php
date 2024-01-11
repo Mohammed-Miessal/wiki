@@ -8,4 +8,7 @@ class ArticleController
     {
         Controller::render("article");
     }
+
+
+
 }
