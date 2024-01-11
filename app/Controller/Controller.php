@@ -37,7 +37,7 @@ class Controller
         include $viewPath;
     }
 
-    public static function rendereditwikiViews($view, $data = [] , $data2 = [] )
+    public static function rendereditwikiViews($view, $data = [], $data2 = [])
     {
         $viewPath = "../app/View/dashboard/wiki/$view.php";
 
@@ -46,6 +46,19 @@ class Controller
         include $viewPath;
     }
 
+
+    public static function renderHome($view, $data = [], $data2 = [])
+    {
+        $viewPath = "../app/View/$view.php";
+
+
+        extract($data);  // Extract data array into variables
+
+        extract($data2);  // Extract data2 array into variables
+
+
+        include $viewPath;
+    }
 
     // public static function getIdFromUri()
     // {
