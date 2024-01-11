@@ -29,21 +29,31 @@ class WikiModel extends Crud
         }
     }
 
-    // public function createwikis($data)
-    // {
-    //     try {
-    //         $columns = implode(", ", array_keys($data));
-    //         $values = ":" . implode(", :", array_keys($data));
 
-    //         $query = "INSERT INTO wiki ($columns) VALUES ($values)";
-    //         $stmt = $this->pdo->prepare($query);
-    //         $stmt->execute($data);
+    public function readwikisuser($id)
+    {
+        try {
+            $query = "SELECT wiki.id, wiki.title, wiki.description, user.name AS Author, status, categorie.name AS Categorie
+                FROM wiki
+                INNER JOIN user ON user.id = wiki.user_id
+                INNER JOIN categorie ON categorie.id = wiki.categorie_id
+                WHERE wiki.user_id = :id ;";
+    
+            // Prepare and execute the SQL statement with named parameter
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $records; // Return the fetched records
+        } catch (PDOException $e) {
+            echo "Error fetching records: " . $e->getMessage();
+            return []; // Return an empty array in case of an error
+        }
+    }
+    
 
-    //         // echo "Record added successfully!";
-    //     } catch (PDOException $e) {
-    //         echo "Error creating record: " . $e->getMessage();
-    //     }
-    // }
 
     public function createwikis($data)
     {
@@ -61,43 +71,22 @@ class WikiModel extends Crud
         return $this->update('wiki', $id, $data);
     }
 
-    // public function showcontent($id)
-    // {
-    //     try {
-    //         $query = "SELECT content  FROM wiki WHERE id = :id ;";
-
-    //         // Prepare and execute the SQL statement
-    //         $stmt = $this->pdo->prepare($query);
-    //         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-    //         $stmt->execute();
-
-    //         $record = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //         return $record; // Return the fetched records
-    //     } catch (PDOException $e) {
-    //         echo "Error fetching records: " . $e->getMessage();
-    //         return []; // Return an empty array in case of an error
-    //     }
-    // }
-
     public function showcontent($id)
-{
-    try {
-        $query = "SELECT content FROM wiki WHERE id = :id ;";
+    {
+        try {
+            $query = "SELECT content FROM wiki WHERE id = :id ;";
 
-        // Prepare and execute the SQL statement
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-        $stmt->execute();
+            // Prepare and execute the SQL statement
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-        $record = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch instead of fetchAll
+            $record = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch instead of fetchAll
 
-        return $record; // Return the fetched record
-    } catch (PDOException $e) {
-        echo "Error fetching records: " . $e->getMessage();
-        return []; // Return an empty array in case of an error
+            return $record; // Return the fetched record
+        } catch (PDOException $e) {
+            echo "Error fetching records: " . $e->getMessage();
+            return []; // Return an empty array in case of an error
+        }
     }
-}
-
-
 }

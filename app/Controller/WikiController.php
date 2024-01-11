@@ -15,10 +15,17 @@ class WikiController
             session_start();
         }
         if (isset($_SESSION['id'])) {
-            $wikis = new WikiModel();
-            $wikis = $wikis->readwikis();
-            // include("../app/View/dashboard/wiki/wiki.php");
-            Controller::renderwikiViews("wiki", ["wikis" => $wikis]);
+            $id = $_SESSION['id'];
+            if ($_SESSION['role_id'] == 1) {
+                $wikis = new WikiModel();
+                $wikis = $wikis->readwikisuser($id);
+                // include("../app/View/dashboard/wiki/wiki.php");
+                Controller::renderwikiViews("wiki", ["wikis" => $wikis]);
+            } else {
+                $wikis = new WikiModel();
+                $wikis = $wikis->readwikis();
+                Controller::renderwikiViews("wiki", ["wikis" => $wikis]);
+            }
         } else {
             Controller::render("login");
         }
@@ -39,7 +46,7 @@ class WikiController
     //     $wikis = new WikiModel();
     //     $wikis->showcontent($id);
     //     Controller::renderwikiViews("wikicontent", ["wikis" => $wikis]);
-        
+
     // }
 
     public function show($id)
@@ -48,6 +55,4 @@ class WikiController
         $wikiContent = $wikis->showcontent($id); // Capture the result of showcontent
         Controller::renderwikiViews("wikicontent", ["wikiContent" => $wikiContent]); // Pass $wikiContent to the view
     }
-    
-
 }

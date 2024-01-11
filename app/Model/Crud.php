@@ -43,7 +43,7 @@ class Crud extends Connection
             return []; // Return an empty array in case of an error
         }
     }
-    
+
     public function update($tableName, $data, $id)
     {
         try {
