@@ -1,4 +1,6 @@
-/*drop database wiki;*/
+
+drop database wiki;
+
 
 create database wiki;
 use wiki;
@@ -48,9 +50,10 @@ CREATE TABLE Wiki (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title  VARCHAR(50) UNIQUE NOT NULL,
     description  VARCHAR(100)  NOT NULL,
-    content longtext,
+    content longtext ,
    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	status enum("Pending","Approved","Rejected"),
+    image varchar (255),
         user_id INT,
          categorie_id INT,
     FOREIGN KEY (user_id)
@@ -77,6 +80,25 @@ INSERT INTO Role (id, role_type)
 VALUES 
     (1, 'Author'),
     (2, 'Admin');
+
+    
+/*
+-- Insertion des Tags
+INSERT INTO Tag (name, user_id) VALUES ('Sport', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Cuisine', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Voyage', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Photographie', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Technologie', 1);
+
+
+-- Insertion des Categories
+INSERT INTO Categorie (name, user_id) VALUES ('Livres', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Films', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Musique', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Sports', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Cuisine', 1);
+*/
+
 
 
 

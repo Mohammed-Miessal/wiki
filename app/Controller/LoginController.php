@@ -25,22 +25,26 @@ class LoginController
         if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
-             
+
             $user = new UserModel();
             $user = $user->login($email);
 
             if ($user && password_verify($password, $user['password'])) {
-           
+
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['name'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role_id'] = $user['role_id'];
 
-                $redirect = URL_DIR . 'dashboard';
-                header("Location: $redirect");
-               
-                exit();
-
+                if ($_SESSION['role_id'] == 2) {
+                    $redirect = URL_DIR . 'dashboard';
+                    header("Location: $redirect");
+                    exit();
+                } else {
+                    $redirect = URL_DIR . 'wiki';
+                    header("Location: $redirect");
+                    exit();
+                }
             } else {
 
                 $redirect = URL_DIR . 'login';
@@ -50,7 +54,8 @@ class LoginController
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         if (isset($_POST['logout'])) {
             session_start();
             session_unset();
@@ -60,5 +65,4 @@ class LoginController
             exit();
         }
     }
-
 }

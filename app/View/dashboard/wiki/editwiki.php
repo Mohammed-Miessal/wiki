@@ -130,9 +130,20 @@
                         </p>
                     </div>
                     <ul class="py-1" role="none">
+
                         <li>
                             <a href="home" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Wiki Home</a>
                         </li>
+                        <?php if ($_SESSION['role_id'] == 1) { ?>
+                            <li>
+                                <a href="wiki" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                            </li>
+                        <?php } else { ?>
+
+                            <li>
+                                <a href="dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                            </li>
+                        <?php  } ?>
                         <li>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
                         </li>
@@ -142,8 +153,8 @@
                         <li>
                             <form action="login/logout" method="POST">
                                 <!-- <button name="logout" class=" inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
-                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
-                                </button> -->
+            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
+        </button> -->
                                 <div class="flex justify-center">
                                     <button name="logout" class="inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700 mx-auto">
                                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
@@ -179,7 +190,7 @@
                                             </div>
 
                                             <div class="p-6 space-y-6">
-                                            <form action="../edit/<?= $id ?>" method="post">
+                                                <form action="../edit/<?= $id ?>" method="post">
                                                     <div class="grid grid-cols-6 gap-6">
                                                         <div class="col-span-6 sm:col-span-3">
                                                             <label for="title" class="text-sm font-medium text-gray-900 block mb-2">Title</label>
@@ -193,7 +204,7 @@
                                                             <label for="categorie" class="text-sm font-medium text-gray-900 block mb-2">Categorie</label>
                                                             <select id="categorie" name="categorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                                 <option selected disabled>Choose a Categorie</option>
-                                                           
+
                                                                 <?php
                                                                 foreach ($categories as $categorie) {
                                                                     echo "<option value='{$categorie['id']}'>{$categorie['name']}</option>";
@@ -212,7 +223,7 @@
                                                                     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                                                                 });
                                                             </script>
-                                                            <textarea name="content" >
+                                                            <textarea name="content">
 
                                                             </textarea>
                                                         </div>

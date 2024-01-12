@@ -16,7 +16,8 @@ class WikiModel extends Crud
             inner join user 
             on user.id = wiki.user_id
             inner join categorie 
-            on categorie.id = wiki.categorie_id;";
+            on categorie.id = wiki.categorie_id
+            where wiki.status = 'Pending';";
 
             $stmt = $this->pdo->query($query);
 
@@ -38,21 +39,21 @@ class WikiModel extends Crud
                 INNER JOIN user ON user.id = wiki.user_id
                 INNER JOIN categorie ON categorie.id = wiki.categorie_id
                 WHERE wiki.user_id = :id ;";
-    
+
             // Prepare and execute the SQL statement with named parameter
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
-    
+
             $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             return $records; // Return the fetched records
         } catch (PDOException $e) {
             echo "Error fetching records: " . $e->getMessage();
             return []; // Return an empty array in case of an error
         }
     }
-    
+
 
 
     public function createwikis($data)
