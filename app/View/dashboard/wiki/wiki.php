@@ -222,7 +222,7 @@
                                                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                            <!-- <th scope="col" class="px-4 py-3">Image</th> -->
+                                                        <th scope="col" class="px-4 py-3"  >Image</th>
                                                             <th scope="col" class="px-4 py-4"> Title</th>
                                                             <th scope="col" class="px-4 py-4"> Description </th>
                                                             <th scope="col" class="px-4 py-3">Author</th>
@@ -234,8 +234,13 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                 
+
                                                         <?php foreach ($wikis as $wiki) { ?>
                                                             <tr class="border-b dark:border-gray-700">
+                                                            <td class="px-4 py-3 text-center">   
+                                                                <img class="w-full h-10 rounded-full flex justify-center items-center " src="public/assets/uploads/<?= $wiki['image'] ?>" alt="<?= $wiki['title']?>">
+                                                             </td>
                                                                 <!-- <td class="px-4 py-3 text-center"> <img src="" />  </td> -->
                                                                 <td class="px-4 py-3 text-center"> <?= $wiki['title'] ?> </td>
                                                                 <td class="px-4 py-3  text-center"> <?= $wiki['description'] ?> </td>
@@ -249,7 +254,7 @@
                                                                     <td class="px-4 py-3 text-center">
                                                                         <form action="editstatus/edit/<?= $wiki['id'] ?>" method="post">
                                                                             <div class="flex items-center justify-center ">
-                                                                                <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                                <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required >
                                                                                     <option selected disabled>Change status</option>
                                                                                     <option value="Pending">Pending</option>
                                                                                     <option value="Approved">Approved</option>

@@ -8,6 +8,7 @@
     <meta name="keywords" content="HTML, CSS, Youcode, tailwindCSS, Wikipedia">
     <meta name="description" content="Wikipedia ">
     <link rel="stylesheet" href="<?= URL_DIR ?>public/assets/dist/output.css">
+    <script src="https://cdn.tiny.cloud/1/icckv8ex6g53igkxo8qrfx7xy860y22rsa3di945zsiyc4am/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -18,7 +19,7 @@
         }
     </script>
 
-    <script src="https://cdn.tiny.cloud/1/q505dyz9r8h30v3q0elmp2c2978iah9n3ohh96hensuylgsb/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 
 </head>
@@ -229,21 +230,19 @@
                                                         </div>
                                                         <div class="col-span-full">
                                                             <label for="content" class="text-sm font-medium text-gray-900 block mb-2">Content</label>
-                                                            <script>
-                                                                tinymce.init({
-                                                                    selector: 'textarea',
-                                                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                                                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-                                                                });
-                                                            </script>
-                                                            <textarea name="content">
 
+                                                            <textarea name="content" id="content">
+                                                                 
                                                             </textarea>
+
+                                                            <!-- <textarea name="content"></textarea> -->
+
                                                         </div>
                                                     </div>
                                                     <div class="p-6 border-t border-gray-200 rounded-b">
-                                                        <button class="text-dark  bg-gray-100 hover:bg-cyan-700 focus:ring-4 ocus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-gray-400 dark:focus:ring-gray-700" type="submit">Save </button>
+                                                        <button class="text-dark bg-gray-100 hover:bg-cyan-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-gray-400 dark:focus:ring-gray-700" type="submit">Save</button>
                                                     </div>
+
                                                 </form>
                                             </div>
 
@@ -265,7 +264,25 @@
         </div>
         <!-- Component End  -->
     </div>
-
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [{
+                    value: 'First.Name',
+                    title: 'First Name'
+                },
+                {
+                    value: 'Email',
+                    title: 'Email'
+                },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
     <!-- / For dark mode -->
     <script src="<?= URL_DIR ?>public/assets/js/darkmode.js"></script>
     <!-- / For navbar mobile -->

@@ -210,8 +210,9 @@
                                                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                            <!-- <th scope="col" class="px-4 py-3">Image</th> -->
-                                                            <th scope="col" class="px-4 py-3">ID</th>
+                                                                                       <!-- <th scope="col" class="px-4 py-3">ID</th> -->
+                                                            <th scope="col" class="px-4 py-3"  >Image</th>
+                                 
                                                             <th scope="col" class="px-4 py-3">Name</th>
                                                             <th scope="col" class="px-4 py-3  text-gray-400">Actions</th>
                                                         </tr>
@@ -220,8 +221,9 @@
                                                         <?php foreach ($categories as $categorie) { ?>
 
                                                             <tr class="border-b dark:border-gray-700">
-                                                                <!-- <td class="px-4 py-3 text-center"> </td> -->
-                                                                <td class="px-4 py-3 text-center"><?= $categorie['id'] ?></td>
+                                                                <td class="px-4 py-3 text-center">   <img class="w-full h-10 rounded-full flex justify-center items-center " src="public/assets/uploads/<?= $categorie['image'] ?>" alt="<?= $categorie['name']?>"> </td>
+                                                               
+                                                              
                                                                 <td class="px-4 py-3 text-center"><?= $categorie['name']  ?></td>
 
                                                                 <td class="px-4 py-3 text-center  overflow-visible">

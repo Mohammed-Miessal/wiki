@@ -60,6 +60,23 @@ class Controller
         include $viewPath;
     }
 
+    public static function renderHome2($view, $data = [], $data2 = [],  $data3 = [],  $data4 = [])
+    {
+        $viewPath = "../app/View/$view.php";
+
+
+        extract($data);  // Extract data array into variables
+
+        extract($data2);  // Extract data2 array into variables
+
+        extract($data3);  // Extract data3 array into variables
+
+        extract($data4);  // Extract data4 array into variables
+
+
+        include $viewPath;
+    }
+
     // public static function getIdFromUri()
     // {
     //     $id = $_SERVER['REQUEST_URI'] ?? '';

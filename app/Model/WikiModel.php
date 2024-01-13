@@ -11,7 +11,7 @@ class WikiModel extends Crud
     public function readwikis()
     {
         try {
-            $query = "select wiki.id,wiki.title,wiki.description,user.name as Author , status,categorie.name as Categorie
+            $query = "select wiki.id,wiki.title,wiki.description, wiki.image,user.name as Author , status,categorie.name as Categorie
             from wiki
             inner join user 
             on user.id = wiki.user_id
@@ -34,7 +34,7 @@ class WikiModel extends Crud
     public function readwikisuser($id)
     {
         try {
-            $query = "SELECT wiki.id, wiki.title, wiki.description, user.name AS Author, status, categorie.name AS Categorie
+            $query = "SELECT  wiki.image,wiki.id, wiki.title, wiki.description, user.name AS Author, status, categorie.name AS Categorie
                 FROM wiki
                 INNER JOIN user ON user.id = wiki.user_id
                 INNER JOIN categorie ON categorie.id = wiki.categorie_id
@@ -90,4 +90,57 @@ class WikiModel extends Crud
             return []; // Return an empty array in case of an error
         }
     }
+
+
+    public function home()
+    {
+        try {
+            $query = "select wiki.id,wiki.title,wiki.description, wiki.image,DAY(date) AS day, MONTH(date) AS month, YEAR(date) AS year,
+            user.name as Author , status,categorie.name as Categorie,
+            categorie.image as imageCat , categorie.name as nameCat
+            from wiki
+            inner join user 
+            on user.id = wiki.user_id
+            inner join categorie 
+            on categorie.id = wiki.categorie_id
+            where wiki.status = 'Approved'
+            ORDER BY date DESC
+            LIMIT 5;";
+
+            $stmt = $this->pdo->query($query);
+
+            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $records; // Return the fetched records
+        } catch (PDOException $e) {
+            echo "Error fetching records: " . $e->getMessage();
+            return []; // Return an empty array in case of an error
+        }
+    }
+
+    public function home2()
+    {
+        try {
+            $query = "select wiki.id,wiki.title,wiki.description, wiki.image,DAY(date) AS day, MONTH(date) AS month, YEAR(date) AS year,
+            user.name as Author , status,categorie.name as Categorie,
+            categorie.image as imageCat , categorie.name as nameCat
+            from wiki
+            inner join user 
+            on user.id = wiki.user_id
+            inner join categorie 
+            on categorie.id = wiki.categorie_id
+            where wiki.status = 'Approved';
+           ";
+
+            $stmt = $this->pdo->query($query);
+
+            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $records; // Return the fetched records
+        } catch (PDOException $e) {
+            echo "Error fetching records: " . $e->getMessage();
+            return []; // Return an empty array in case of an error
+        }
+    }
+
 }

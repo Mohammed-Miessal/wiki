@@ -189,11 +189,15 @@
                                             </div>
 
                                             <div class="p-6 space-y-6">
-                                                <form action="addcategorie/create" method="POST">
+                                                <form action="addcategorie/create" method="POST" enctype="multipart/form-data">
                                                     <div class="grid grid-cols-6 gap-6">
                                                         <div class="col-span-6 sm:col-span-3">
                                                             <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Name</label>
                                                             <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="New categorie" required>
+                                                        </div>
+                                                        <div class="col-span-6 sm:col-span-3">
+                                                            <label for="image" class="text-sm font-medium text-gray-900 block mb-2">image</label>
+                                                            <input type="file" name="image" id="image" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
                                                         </div>
 
                                                     </div>
