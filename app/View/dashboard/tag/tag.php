@@ -17,7 +17,6 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
-
 </head>
 
 <body class="font-poppins text-gray-600 dark:bg-gray-900">
@@ -150,9 +149,7 @@
                         </li>
                         <li>
                             <form action="login/logout" method="POST">
-                                <!-- <button name="logout" class=" inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
-            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
-        </button> -->
+
                                 <div class="flex justify-center">
                                     <button name="logout" class="inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700 mx-auto">
                                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
@@ -183,7 +180,6 @@
                                     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                                         <!-- Start coding here -->
 
-                                        <!-- <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"> -->
                                         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden overflow-y-visible ">
                                             <div class="flex justify-end items-center w-full md:w-full">
                                                 <!-- Search -->
@@ -283,6 +279,7 @@
             </div>
             <!-- / Main -->
         </div>
+
         <!-- Component End  -->
     </div>
 

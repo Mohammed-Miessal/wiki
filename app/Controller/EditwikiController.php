@@ -10,23 +10,17 @@ session_start();
 class EditwikiController
 {
 
-
     public function index($id)
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+
         if (isset($_SESSION['id'])) {
 
             $categories = new CategorieModel();
             $categories = $categories->readcategories();
 
             $data = [
-                'id' => $id
+                'id' => htmlspecialchars($id, ENT_QUOTES, 'UTF-8')
             ];
-
-            // var_dump($data['id']);
-            // die();
 
             Controller::rendereditwikiViews("editwiki", $data, ["categories" => $categories]);
         } else {
@@ -40,14 +34,21 @@ class EditwikiController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Get form data
+
+            $title = htmlspecialchars($_POST['title'], ENT_QUOTES, 'UTF-8');
+            $description = htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8');
+            $categorie_id = htmlspecialchars($_POST['categorie'], ENT_QUOTES, 'UTF-8');
+         
+
             $data = [
-                'title' => $_POST['title'],
-                'description' => $_POST['description'],
-                'categorie_id' => $_POST['categorie'],
+                'title' => $title,
+                'description' => $description,
+                'categorie_id' => $categorie_id,
                 'content' => $_POST['content'],
                 'user_id' => $_SESSION['id'],
                 'status' => 'Pending'
             ];
+
 
             $categorie = new WikiModel();
             $categorie->editwikis($data, $id);

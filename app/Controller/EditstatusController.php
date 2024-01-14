@@ -6,15 +6,18 @@ use App\Model\WikiModel;
 
 
 session_start();
-class EditstatusController 
+class EditstatusController
 {
     public function edit($id)
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Get form data
+
+            $status = htmlspecialchars($_POST['status'], ENT_QUOTES, 'UTF-8');
+
             $data = [
-                'status' => $_POST['status']
+                'status' => $status
             ];
 
             $categorie = new WikiModel();

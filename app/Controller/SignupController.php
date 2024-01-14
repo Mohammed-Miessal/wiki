@@ -18,19 +18,30 @@ class SignupController
             Controller::render("signup");
         }
     }
+
+
+
     public function register()
     {
-       
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+            $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+            $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+
             $role_id = 1;
 
             $errors = [];
 
-            if (empty($fullname) || empty($email) || empty($password) || empty($confirmPassword)) {
+            if (empty($name) || empty($email) || empty($password)) {
+
                 $errors[] = "All fields are required";
+            }
+
+            if (!empty($errors)) {
+                // Afficher les erreurs à l'utilisateur plutôt que de simplement rediriger
+                Controller::render("signup", ['errors' => $errors]);
+                return;
             }
 
             $data = [
@@ -40,12 +51,13 @@ class SignupController
                 'role_id' => $role_id
             ];
 
-          
+
 
             $user = new UserModel();
             $redirect = URL_DIR . 'login';
 
             $user = $user->createUser($data);
+
             if ($user) {
                 header("Location: $redirect");
             } else {

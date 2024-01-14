@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="<?= URL_DIR ?>public/assets/dist/output.css">
     <script src="https://cdn.tiny.cloud/1/icckv8ex6g53igkxo8qrfx7xy860y22rsa3di945zsiyc4am/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
+
+    <style>
+        #title-error,
+        #description-error,
+        #categorie-error,
+        #image-error,
+        #content-error {
+            color: red;
+        }
+    </style>
+
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -20,14 +31,31 @@
     </script>
 
 
-
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [{
+                    value: 'First.Name',
+                    title: 'First Name'
+                },
+                {
+                    value: 'Email',
+                    title: 'Email'
+                },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
 
 </head>
 
 <body class="font-poppins text-gray-600 dark:bg-gray-900">
     <div class="flex w-screen h-screen text-gray-700">
         <!-- Component Start -->
-
 
         <!-- aside -->
         <div class="flex flex-col items-center w-16 pb-4 overflow-auto border-r border-gray-300">
@@ -165,9 +193,7 @@
                         </li>
                         <li>
                             <form action="login/logout" method="POST">
-                                <!-- <button name="logout" class=" inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
-                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
-                                </button> -->
+
                                 <div class="flex justify-center">
                                     <button name="logout" class="inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700 mx-auto">
                                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
@@ -203,40 +229,47 @@
                                             </div>
 
                                             <div class="p-6 space-y-6">
-                                                <form action="addwiki/create" method="post" enctype="multipart/form-data">
+                                                <form action="addwiki/create" method="post" enctype="multipart/form-data" id="myForm">
                                                     <div class="grid grid-cols-6 gap-6">
                                                         <div class="col-span-6 sm:col-span-3">
                                                             <label for="title" class="text-sm font-medium text-gray-900 block mb-2">Title</label>
-                                                            <input type="text" name="title" id="title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Title Max(50 chars)" required>
+                                                            <input type="text" name="title" id="title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Title Max(50 chars)">
+                                                            <small id="title-error" class="text-red-500"></small>
                                                         </div>
                                                         <div class="col-span-6 sm:col-span-3">
                                                             <label for="description" class="text-sm font-medium text-gray-900 block mb-2">Description</label>
-                                                            <input type="text" name="description" id="description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Description Max(100 chars)" required>
+                                                            <input type="text" name="description" id="description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Description Max(100 chars)">
+                                                            <small id="description-error" class="text-red-500"></small>
                                                         </div>
                                                         <div class="col-span-6 sm:col-span-3">
                                                             <label for="categorie" class="text-sm font-medium text-gray-900 block mb-2">Categorie</label>
                                                             <select id="categorie" name="categorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                <option selected disabled>Choose a Category</option>
+                                                                <option value="" selected disabled>Choose a Category</option>
                                                                 <?php
                                                                 foreach ($categories as $categorie) {
                                                                     echo "<option value='{$categorie['id']}'>{$categorie['name']}</option>";
                                                                 }
                                                                 ?>
                                                             </select>
+                                                            <small id="categorie-error" class="text-red-500"></small>
                                                         </div>
                                                         <div class="col-span-6 sm:col-span-3">
                                                             <label for="image" class="text-sm font-medium text-gray-900 block mb-2">image</label>
-                                                            <input type="file" name="image" id="image" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                                                            <input type="file" name="image" id="image" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                                                            <small id="image-error" class="text-red-500"></small>
+                                                        </div>
+                                                        <div class="col-span-6 sm:col-span-3">
+                                                            <label for="tags" class="text-sm font-medium text-gray-900 block mb-2">Tags  (Comma Separated ',')</label>
+                                                            <input type="text" name="tags" id="tags" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                                                            <small id="tags-error" class="text-red-500"></small>
                                                         </div>
                                                         <div class="col-span-full">
                                                             <label for="content" class="text-sm font-medium text-gray-900 block mb-2">Content</label>
 
                                                             <textarea name="content" id="content">
-                                                                 
+
                                                             </textarea>
-
-                                                            <!-- <textarea name="content"></textarea> -->
-
+                                                            <small id="content-error" class="text-red-500"></small>
                                                         </div>
                                                     </div>
                                                     <div class="p-6 border-t border-gray-200 rounded-b">
@@ -245,8 +278,6 @@
 
                                                 </form>
                                             </div>
-
-
 
                                         </div>
 
@@ -262,27 +293,91 @@
             </div>
             <!-- / Main -->
         </div>
+
         <!-- Component End  -->
     </div>
+
+
+
+
+    <!-- Form Validation  -->
+
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-            mergetags_list: [{
-                    value: 'First.Name',
-                    title: 'First Name'
-                },
-                {
-                    value: 'Email',
-                    title: 'Email'
-                },
-            ],
-            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('myForm');
+
+            form.addEventListener('submit', function(event) {
+                // Annuler le comportement par défaut du formulaire pour empêcher l'envoi direct
+                event.preventDefault();
+
+                // Appeler la fonction de validation
+                validateForm();
+            });
+
+            function validateForm() {
+                var titleField = document.getElementById('title');
+                var descriptionField = document.getElementById('description');
+                var categorieField = document.getElementById('categorie');
+                var imageField = document.getElementById('image');
+                var contentField = document.getElementById('content');
+
+                // Fonction pour afficher les messages d'erreur
+                function showError(field, message) {
+                    var errorElement = document.getElementById(field.id + '-error');
+                    if (errorElement) {
+                        errorElement.innerText = message;
+                    }
+                }
+
+                // Réinitialiser les messages d'erreur
+                showError(titleField, '');
+                showError(descriptionField, '');
+                showError(categorieField, '');
+                showError(imageField, '');
+                showError(contentField, '');
+
+                // Validation pour le champ de titre
+                if (titleField.value.trim() === '' || titleField.value.length > 50) {
+                    showError(titleField, 'Le champ Title est obligatoire et doit avoir au maximum 50 caractères.');
+                }
+
+                // Validation pour le champ de description
+                if (descriptionField.value.trim() === '' || descriptionField.value.length > 100) {
+                    showError(descriptionField, 'Le champ Description est obligatoire et doit avoir au maximum 100 caractères.');
+                }
+
+                // Validation pour le champ de catégorie
+                if (categorieField.value === null || categorieField.value === '') {
+                    showError(categorieField, 'Veuillez choisir une catégorie.');
+                }
+
+                // Validation pour le champ d'image
+                if (imageField.value.trim() === '') {
+                    showError(imageField, 'Le champ Image est obligatoire.');
+                }
+
+
+                // Validation pour le champ de contenu
+                if (contentField.value.length < 50) {
+                    showError(contentField, 'Le champ Content est obligatoire et doit etre plus que  50 caractères.');
+                }
+
+                // Si toutes les validations réussissent, vous pouvez soumettre le formulaire
+                if (
+                    titleField.value.trim() !== '' && titleField.value.length <= 50 &&
+                    descriptionField.value.trim() !== '' && descriptionField.value.length <= 100 &&
+                    categorieField.value !== null && categorieField.value !== '' &&
+                    imageField.value.trim() !== '' &&
+                    contentField.value.trim() !== ''
+                ) {
+                    form.submit();
+                }
+            }
         });
     </script>
+
+    <!-- / Form Validation  -->
+
     <!-- / For dark mode -->
     <script src="<?= URL_DIR ?>public/assets/js/darkmode.js"></script>
     <!-- / For navbar mobile -->

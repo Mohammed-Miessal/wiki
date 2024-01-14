@@ -190,7 +190,6 @@
                                     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                                         <!-- Start coding here -->
 
-                                        <!-- <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"> -->
                                         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden overflow-y-visible ">
                                             <div class="flex justify-end items-center w-full md:w-full">
                                                 <!-- Search -->
@@ -213,20 +212,17 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                            <?php
-                                            // $id = $_SESSION['id'];
-                                            // var_dump($id) ; die(); 
-                                            ?>
 
                                             <div class="overflow-x-auto">
                                                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                        <th scope="col" class="px-4 py-3"  >Image</th>
+                                                            <th scope="col" class="px-4 py-3">Image</th>
                                                             <th scope="col" class="px-4 py-4"> Title</th>
                                                             <th scope="col" class="px-4 py-4"> Description </th>
                                                             <th scope="col" class="px-4 py-3">Author</th>
                                                             <th scope="col" class="px-4 py-3">Categorie</th>
+                                                            <th scope="col" class="px-4 py-3">Tags</th>
                                                             <th scope="col" class="px-4 py-3">Status</th>
                                                             <?php if ($_SESSION['role_id'] == 1) { ?>
                                                                 <th scope="col" class="px-4 py-3  text-gray-400">Actions</th>
@@ -234,18 +230,19 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                 
+
 
                                                         <?php foreach ($wikis as $wiki) { ?>
                                                             <tr class="border-b dark:border-gray-700">
-                                                            <td class="px-4 py-3 text-center">   
-                                                                <img class="w-full h-10 rounded-full flex justify-center items-center " src="public/assets/uploads/<?= $wiki['image'] ?>" alt="<?= $wiki['title']?>">
-                                                             </td>
+                                                                <td class="px-4 py-3 text-center">
+                                                                    <img class="w-full h-10 rounded-full flex justify-center items-center " src="public/assets/uploads/<?= $wiki['image'] ?>" alt="<?= $wiki['title'] ?>">
+                                                                </td>
                                                                 <!-- <td class="px-4 py-3 text-center"> <img src="" />  </td> -->
                                                                 <td class="px-4 py-3 text-center"> <?= $wiki['title'] ?> </td>
                                                                 <td class="px-4 py-3  text-center"> <?= $wiki['description'] ?> </td>
                                                                 <td class="px-4 py-3 text-center"> <?= $wiki['Author'] ?> </td>
                                                                 <td class="px-4 py-3 text-center"> <?= $wiki['Categorie'] ?> </td>
+                                                                <td class="px-4 py-3 text-center"> <?= $wiki['Tags'] ?> </td>
                                                                 <?php if ($_SESSION['role_id'] == 1) { ?>
                                                                     <td class="px-4 py-3 text-center">
                                                                         <?= $wiki['status'] ?>
@@ -254,7 +251,7 @@
                                                                     <td class="px-4 py-3 text-center">
                                                                         <form action="editstatus/edit/<?= $wiki['id'] ?>" method="post">
                                                                             <div class="flex items-center justify-center ">
-                                                                                <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required >
+                                                                                <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                                                                     <option selected disabled>Change status</option>
                                                                                     <option value="Pending">Pending</option>
                                                                                     <option value="Approved">Approved</option>
@@ -338,6 +335,7 @@
             </div>
             <!-- / Main -->
         </div>
+
         <!-- Component End  -->
     </div>
 

@@ -10,9 +10,7 @@ class LoginController
 {
     public function index()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+      
         if (isset($_SESSION['id'])) {
             Controller::render("home");
         } else {
@@ -36,15 +34,20 @@ class LoginController
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role_id'] = $user['role_id'];
 
-                if ($_SESSION['role_id'] == 2) {
-                    $redirect = URL_DIR . 'dashboard';
-                    header("Location: $redirect");
-                    exit();
-                } else {
-                    $redirect = URL_DIR . 'wiki';
-                    header("Location: $redirect");
-                    exit();
-                }
+                // if ($_SESSION['role_id'] == 2) {
+
+                //     $redirect = URL_DIR . 'dashboard';
+                //     header("Location: $redirect");
+                //     exit();
+                // } else {
+
+                //     $redirect = URL_DIR . 'wiki';
+                //     header("Location: $redirect");
+                //     exit();
+                // }
+                $redirect = ($_SESSION['role_id'] == 2) ? URL_DIR . 'dashboard' : URL_DIR . 'wiki';
+                header("Location: $redirect");
+                exit();
             } else {
 
                 $redirect = URL_DIR . 'login';

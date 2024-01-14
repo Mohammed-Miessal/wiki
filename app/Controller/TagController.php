@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\TagModel;
 
 session_start();
+
 class TagController
 {
     public function index()

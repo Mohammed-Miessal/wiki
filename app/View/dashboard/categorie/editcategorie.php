@@ -9,6 +9,12 @@
     <meta name="description" content="Wikipedia ">
     <link rel="stylesheet" href="<?= URL_DIR ?>public/assets/dist/output.css">
 
+    <style>
+        #name-error {
+            color: red;
+        }
+    </style>
+
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -19,8 +25,6 @@
     </script>
 
     <script src="https://cdn.tiny.cloud/1/q505dyz9r8h30v3q0elmp2c2978iah9n3ohh96hensuylgsb/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
-
 </head>
 
 <body class="font-poppins text-gray-600 dark:bg-gray-900">
@@ -152,9 +156,7 @@
                         </li>
                         <li>
                             <form action="login/logout" method="POST">
-                                <!-- <button name="logout" class=" inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
-                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
-                                </button> -->
+
                                 <div class="flex justify-center">
                                     <button name="logout" class="inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700 mx-auto">
                                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
@@ -190,27 +192,25 @@
                                             </div>
 
                                             <div class="p-6 space-y-6">
-                                                <form action="../edit/<?= $id ?>" method="post">
+                                                <form action="../edit/<?= $id ?>" method="post" id="myForm">
+
                                                     <div class="grid grid-cols-6 gap-6">
+
                                                         <div class="col-span-6 sm:col-span-3">
-                                                            <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Name</label>
-                                                            <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="New categorie" required>
+                                                            <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Name Categorie</label>
+                                                            <input id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                                            <small id="name-error"></small>
                                                         </div>
-                                                        <div class="col-span-6 sm:col-span-3">
-                                                            <label for="image" class="text-sm font-medium text-gray-900 block mb-2">image</label>
-                                                            <input type="file" name="image" id="image" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
-                                                        </div>
-                                                        <div class="p-6 border-t border-gray-200 rounded-b">
-                                                            <button type="submit" class="text-dark  bg-gray-100 hover:bg-cyan-700 focus:ring-4 ocus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-gray-400 dark:focus:ring-gray-700">Save </button>
-                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="p-6 border-t border-gray-200 rounded-b">
+                                                        <button type="button" onclick="validateForm()" class="text-dark  bg-gray-100 hover:bg-cyan-700 focus:ring-4 ocus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-gray-400 dark:focus:ring-gray-700">Save </button>
                                                     </div>
 
 
                                                 </form>
                                             </div>
-
-
-
                                         </div>
                                     </div>
 
@@ -224,8 +224,25 @@
             </div>
             <!-- / Main -->
         </div>
+
         <!-- Component End  -->
     </div>
+
+    <script>
+        function validateForm() {
+            var nameField = document.getElementById('name');
+            var nameError = document.getElementById('name-error');
+
+            // Validation pour le champ de nom
+            if (nameField.value.trim() === '') {
+                nameError.innerText = 'Le champ Name est obligatoire.';
+            } else {
+                nameError.innerText = ''; // Réinitialise le message d'erreur
+                document.getElementById('myForm').submit();
+
+            }
+        }
+    </script>
 
     <!-- / For dark mode -->
     <script src="<?= URL_DIR ?>public/assets/js/darkmode.js"></script>

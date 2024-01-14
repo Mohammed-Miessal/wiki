@@ -42,13 +42,6 @@ class WikiController
         exit();
     }
 
-    // public function show($id){
-    //     $wikis = new WikiModel();
-    //     $wikis->showcontent($id);
-    //     Controller::renderwikiViews("wikicontent", ["wikis" => $wikis]);
-
-    // }
-
     public function show($id)
     {
         $wikis = new WikiModel();

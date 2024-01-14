@@ -11,13 +11,11 @@ class EdittagController
 
     public function index($id)
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+
         if (isset($_SESSION['id'])) {
 
             $data = [
-                'id' => $id
+                'id' => htmlspecialchars($id, ENT_QUOTES, 'UTF-8')
             ];
 
             Controller::rendertagViews("edittag", $data);
@@ -26,25 +24,25 @@ class EdittagController
         }
     }
 
+
     public function edit($id)
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get form data
+            // Get form data and sanitize
+            $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+
             $data = [
-                'name' => $_POST['name'],
-                'user_id' =>  $_SESSION['id']
+                'name' => $name,
+                'user_id' => $_SESSION['id']
             ];
 
-            $categorie = new TagModel();
-            $categorie->edittags($data, $id);
+            $tagModel = new TagModel();
+            $tagModel->edittags($data, $id);
 
             $redirect = URL_DIR . 'tag';
             header("Location: $redirect");
 
-
             exit();
         }
     }
-
 }

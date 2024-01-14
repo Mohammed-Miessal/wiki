@@ -4,15 +4,14 @@ namespace App\Controller;
 
 use App\Model\CategorieModel;
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 class AddcategorieController
 {
     public function index()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         if (isset($_SESSION['id'])) {
             Controller::rendercategorieViews("addcategorie");
         } else {
@@ -31,7 +30,7 @@ class AddcategorieController
                 $filename = preg_replace("/[^a-zA-Z0-9]/", "", $_POST['name']);
 
                 // Validate file extension
-                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif' , 'svg'];
+                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
                 $originalExtension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
 
                 if (!in_array($originalExtension, $allowedExtensions)) {
@@ -40,6 +39,13 @@ class AddcategorieController
                 }
 
                 $targetFileName = $uploadDirectory . $filename . '.' . $originalExtension;
+
+                // Validate file MIME type
+                $fileMimeType = mime_content_type($image['tmp_name']);
+                if (!in_array($fileMimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'])) {
+                    echo 'Invalid file type.';
+                    return;
+                }
 
                 if (move_uploaded_file($image['tmp_name'], $targetFileName)) {
                     $image = $filename . '.' . $originalExtension;
@@ -50,47 +56,18 @@ class AddcategorieController
             }
 
             // Get form data
-
             $data = [
-                'name' => $_POST['name'],
-                'user_id' =>  $_SESSION['id'],
+                'name' => htmlspecialchars($_POST['name']),
+                'user_id' => $_SESSION['id'],
                 'image' => $image
-
             ];
-
 
             $categorie = new CategorieModel();
             $categorie->createcategories($data);
 
-
             $redirect = URL_DIR . 'categorie';
             header("Location: $redirect");
-
-
             exit();
         }
     }
-
-
-    // public function create()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         // Get form data
-    //         $data = [
-    //             'name' => $_POST['name'],
-    //             'user_id' =>  $_SESSION['id']
-    //             // 'image' => isset($_POST['image']) ? $_POST['image'] : null
-    //         ];
-
-    //         $categorie = new CategorieModel();
-    //         $categorie->createcategories($data);
-
-
-    //         $redirect = URL_DIR . 'categorie';
-    //         header("Location: $redirect");
-
-
-    //         exit();   
-    //     }
-    // }
 }

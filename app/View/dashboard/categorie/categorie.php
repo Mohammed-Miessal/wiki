@@ -150,9 +150,6 @@
                         </li>
                         <li>
                             <form action="login/logout" method="POST">
-                                <!-- <button name="logout" class=" inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700">
-                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
-                                </button> -->
                                 <div class="flex justify-center">
                                     <button name="logout" class="inline-flex items-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 dark:text-gray-400 dark:focus:ring-gray-700 dark:bg-gray-700 mx-auto">
                                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Log out</a>
@@ -183,7 +180,6 @@
                                     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                                         <!-- Start coding here -->
 
-                                        <!-- <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"> -->
                                         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden overflow-y-visible ">
                                             <div class="flex justify-end items-center w-full md:w-full">
                                                 <!-- Search -->
@@ -192,7 +188,7 @@
                                                 </div>
                                                 <!-- / Search -->
 
-                                                <!-- Div avec le bouton aligné à droite -->
+                                                <!--  Add Categorie Button -->
                                                 <div class="flex justify-end items-center mb-3">
                                                     <a href="addcategorie">
                                                         <button type="button" id="createProductModalButton" data-modal-target="createProductModal" data-modal-toggle="createProductModal" class="md:w-auto flex items-center justify-end py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
@@ -210,9 +206,7 @@
                                                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
-                                                                                       <!-- <th scope="col" class="px-4 py-3">ID</th> -->
-                                                            <th scope="col" class="px-4 py-3"  >Image</th>
-                                 
+                                                            <th scope="col" class="px-4 py-3">Image</th>
                                                             <th scope="col" class="px-4 py-3">Name</th>
                                                             <th scope="col" class="px-4 py-3  text-gray-400">Actions</th>
                                                         </tr>
@@ -221,9 +215,9 @@
                                                         <?php foreach ($categories as $categorie) { ?>
 
                                                             <tr class="border-b dark:border-gray-700">
-                                                                <td class="px-4 py-3 text-center">   <img class="w-full h-10 rounded-full flex justify-center items-center " src="public/assets/uploads/<?= $categorie['image'] ?>" alt="<?= $categorie['name']?>"> </td>
-                                                               
-                                                              
+                                                                <td class="px-4 py-3 text-center"> <img class="w-full h-10 rounded-full flex justify-center items-center " src="public/assets/uploads/<?= $categorie['image'] ?>" alt="<?= $categorie['name'] ?>"> </td>
+
+
                                                                 <td class="px-4 py-3 text-center"><?= $categorie['name']  ?></td>
 
                                                                 <td class="px-4 py-3 text-center  overflow-visible">
@@ -286,6 +280,7 @@
                 </div>
             </div>
             <!-- / Main -->
+
         </div>
         <!-- Component End  -->
     </div>

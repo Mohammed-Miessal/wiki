@@ -1,5 +1,6 @@
-
+/*
 drop database wiki;
+*/
 
 
 create database wiki;
@@ -82,22 +83,7 @@ VALUES
     (2, 'Admin');
 
     
-/*
--- Insertion des Tags
-INSERT INTO Tag (name, user_id) VALUES ('Sport', 1);
-INSERT INTO Tag (name, user_id) VALUES ('Cuisine', 1);
-INSERT INTO Tag (name, user_id) VALUES ('Voyage', 1);
-INSERT INTO Tag (name, user_id) VALUES ('Photographie', 1);
-INSERT INTO Tag (name, user_id) VALUES ('Technologie', 1);
 
-
--- Insertion des Categories
-INSERT INTO Categorie (name, user_id) VALUES ('Livres', 1);
-INSERT INTO Categorie (name, user_id) VALUES ('Films', 1);
-INSERT INTO Categorie (name, user_id) VALUES ('Musique', 1);
-INSERT INTO Categorie (name, user_id) VALUES ('Sports', 1);
-INSERT INTO Categorie (name, user_id) VALUES ('Cuisine', 1);
-*/
 
 
 

@@ -18,6 +18,12 @@
         }
     </script>
 
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+
 </head>
 
 
@@ -42,19 +48,21 @@
                             </div>
 
                             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                                <!-- form -->
+
                                 <form class="space-y-6" action="signup/register" method="POST">
                                     <div>
-                                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Full name</label>
                                         <div class="mt-2">
-                                            <input id="name" name="name" type="text" autocomplete="name" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                            <input id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                            <small></small>
                                         </div>
                                     </div>
 
                                     <div>
                                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                                         <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                            <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                            <small></small>
                                         </div>
                                     </div>
 
@@ -63,7 +71,8 @@
                                             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                                         </div>
                                         <div class="mt-2">
-                                            <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                            <input id="password" name="password" type="password" autocomplete="current-password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                            <small></small>
                                         </div>
                                     </div>
 
@@ -73,6 +82,7 @@
                                         </button>
                                     </div>
                                 </form>
+
                                 <!-- / form -->
                                 <p class="mt-10 text-center text-sm text-gray-500">
                                     Do you have an account?
@@ -88,6 +98,76 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Form Validation  -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+
+            form.addEventListener("submit", function(event) {
+
+                // Prevent the default form submission
+                event.preventDefault();
+
+                function validateEmail(email) {
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    return emailRegex.test(email);
+                }
+
+                // Validate the form fields
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                const errors = [];
+
+                // Validate name
+                const nameErrorMessage = document.querySelector("#name + small");
+                if (name.trim() === "" || name.length < 6 || !name.match(/^[A-Za-z]{3,}\s[A-Za-z]{3,}$/)) {
+                    errors.push("Name is required");
+                    nameErrorMessage.textContent = "Name is required and  should consist of two parts, each with a minimum of 3 letters ";
+                    nameErrorMessage.classList.add("error-message");
+                } else {
+                    nameErrorMessage.textContent = "";
+                    nameErrorMessage.classList.remove("error-message");
+                }
+
+                // Validate email
+                const emailErrorMessage = document.querySelector("#email + small");
+                if (email.trim() === "" || !validateEmail(email)) {
+                    errors.push("Email address is required");
+                    emailErrorMessage.textContent = "Email address is required";
+                    emailErrorMessage.classList.add("error-message");
+                } else {
+                    emailErrorMessage.textContent = "";
+                    emailErrorMessage.classList.remove("error-message");
+                }
+
+                // Validate password
+                const passwordErrorMessage = document.querySelector("#password + small");
+                if (password.trim() === "" || password.length < 6) {
+                    errors.push("Password is required and must be at least 6 characters");
+                    passwordErrorMessage.textContent = "Password is required and must be at least 6 characters";
+                    passwordErrorMessage.classList.add("error-message");
+                } else {
+                    passwordErrorMessage.textContent = "";
+                    passwordErrorMessage.classList.remove("error-message");
+                }
+
+                // If there are validation errors, prevent form submission
+                if (errors.length > 0) {
+                    return false;
+                }
+
+                // If validation passes, submit the form
+                form.submit();
+            });
+        });
+    </script>
+
+    <!-- / Form Validation  -->
 
 </body>
 
