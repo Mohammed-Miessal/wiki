@@ -13,7 +13,7 @@ class AddwikiController
 {
     public function index()
     {
-        if (isset($_SESSION['id'])) {
+        if (isset($_SESSION['id']) && $_SESSION['role_id'] == 1) {
             $categoriesModel = new CategorieModel();
             $categories = $categoriesModel->readcategories();
 
@@ -75,7 +75,7 @@ class AddwikiController
 
                 // Instantiate WikiModel and call createwikis method
                 $wiki = new WikiModel();
-                $wiki->createwikis($data,$tags);
+                $wiki->createwikis($data, $tags);
 
                 // Redirect after successful form processing
                 $redirect = URL_DIR . 'wiki';

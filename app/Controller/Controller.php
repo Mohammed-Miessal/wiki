@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+
 class Controller
 {
     public static function render($view, $data = [])
@@ -17,6 +19,7 @@ class Controller
         $viewPath = "../app/View/dashboard/main.php";
 
         extract($data);  // Extract data array into variables
+
         include $viewPath;
     }
 

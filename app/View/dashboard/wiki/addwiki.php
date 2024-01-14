@@ -259,7 +259,7 @@
                                                             <small id="image-error" class="text-red-500"></small>
                                                         </div>
                                                         <div class="col-span-6 sm:col-span-3">
-                                                            <label for="tags" class="text-sm font-medium text-gray-900 block mb-2">Tags  (Comma Separated ',')</label>
+                                                            <label for="tags" class="text-sm font-medium text-gray-900 block mb-2">Tags (Comma Separated ',')</label>
                                                             <input type="text" name="tags" id="tags" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                                                             <small id="tags-error" class="text-red-500"></small>
                                                         </div>

@@ -1,6 +1,5 @@
-/*
+
 drop database wiki;
-*/
 
 
 create database wiki;
@@ -22,16 +21,21 @@ CREATE TABLE User (
     role_id INT,
     FOREIGN KEY (role_id)
         REFERENCES Role (id)
+         ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
 -- Création de la table Categorie
 CREATE TABLE Categorie (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    image varchar(250),
     name VARCHAR(255) UNIQUE NOT NULL,
     user_id INT,
     FOREIGN KEY (user_id)
         REFERENCES User (id)
+         ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
@@ -43,6 +47,8 @@ CREATE TABLE Tag (
     user_id INT,
     FOREIGN KEY (user_id)
         REFERENCES User (id)
+         ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
@@ -50,7 +56,7 @@ CREATE TABLE Tag (
 CREATE TABLE Wiki (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title  VARCHAR(50) UNIQUE NOT NULL,
-    description  VARCHAR(100)  NOT NULL,
+    description  VARCHAR(255)  NOT NULL ,
     content longtext ,
    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	status enum("Pending","Approved","Rejected"),
@@ -58,9 +64,11 @@ CREATE TABLE Wiki (
         user_id INT,
          categorie_id INT,
     FOREIGN KEY (user_id)
-        REFERENCES User (id),
+        REFERENCES User (id)  ON DELETE CASCADE
+        ON UPDATE CASCADE,
           FOREIGN KEY (categorie_id)
-        REFERENCES Categorie (id)
+        REFERENCES Categorie (id)  ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
@@ -69,9 +77,11 @@ create table wiki_tag (
    id_wiki int,
    id_tag int,
        FOREIGN KEY (id_wiki)
-        REFERENCES wiki (id),
+        REFERENCES wiki (id)  ON DELETE CASCADE
+        ON UPDATE CASCADE,
           FOREIGN KEY (id_tag)
-        REFERENCES tag (id)
+        REFERENCES tag (id)  ON DELETE CASCADE
+        ON UPDATE CASCADE
 
 );
 
@@ -81,14 +91,33 @@ INSERT INTO Role (id, role_type)
 VALUES 
     (1, 'Author'),
     (2, 'Admin');
-
     
+    
+/*
+-- Insertion des Tags
+INSERT INTO Tag (name, user_id) VALUES ('Sport', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Cuisine', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Voyage', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Photographie', 1);
+INSERT INTO Tag (name, user_id) VALUES ('Technologie', 1);
+
+
+-- Insertion des Categories
+INSERT INTO Categorie (name, user_id) VALUES ('Livres', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Films', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Musique', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Sports', 1);
+INSERT INTO Categorie (name, user_id) VALUES ('Cuisine', 1);
+*/
+
+/*
+
+
+update user set   role_id =2 where id = 1;
 
 
 
-
-
-
+*/
 
 
 

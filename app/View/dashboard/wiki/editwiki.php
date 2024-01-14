@@ -223,6 +223,7 @@
                                                             </select>
                                                             <small id="categorie-error" class="text-red-500"></small>
                                                         </div>
+
                                                         <div class="col-span-full">
                                                             <label for="content" class="text-sm font-medium text-gray-900 block mb-2">Content</label>
 

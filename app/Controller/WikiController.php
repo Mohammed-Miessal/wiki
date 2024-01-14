@@ -14,6 +14,7 @@ class WikiController
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+        
         if (isset($_SESSION['id'])) {
             $id = $_SESSION['id'];
             if ($_SESSION['role_id'] == 1) {

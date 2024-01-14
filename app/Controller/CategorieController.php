@@ -11,7 +11,7 @@ class CategorieController
 
     public function index()
     {
-        if (isset($_SESSION['id'])) {
+        if (isset($_SESSION['id']) && $_SESSION['role_id'] == 2) {
             $categoriesModel = new CategorieModel();
             $categories = $categoriesModel->readcategories();
 
@@ -32,12 +32,16 @@ class CategorieController
 
     public function delete($id)
     {
-        $categorie = new CategorieModel();
-        $categorie->deletecategorie($id);
+        if (isset($_SESSION['id']) && $_SESSION['role_id'] == 2) {
+            $categorie = new CategorieModel();
+            $categorie->deletecategorie($id);
 
-        $redirect = URL_DIR . 'categorie';
-        header("Location: $redirect");
+            $redirect = URL_DIR . 'categorie';
+            header("Location: $redirect");
 
-        exit();
+            exit();
+        } else {
+            Controller::render("login");
+        }
     }
 }

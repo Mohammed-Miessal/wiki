@@ -231,4 +231,47 @@ class WikiModel extends Crud
             return []; // Return an empty array in case of an error
         }
     }
+
+    public function totalWikis()
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) as total FROM wiki  where status = 'Approved' ");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result === false) {
+                return ["count" => 0];
+            }
+
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Database Error: ' . $e->getMessage();
+            exit();
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            exit();
+        }
+    }
+
+
+    public function totalwikisPending()
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) AS pendingTotal FROM wiki where status = 'Pending' ;");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result === false) {
+                return ['count' => 0];
+            }
+
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Database Error: ' . $e->getMessage();
+            exit();
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            exit();
+        }
+    }
 }

@@ -12,7 +12,8 @@ class AddtagController
 {
     public function index()
     {
-        if (isset($_SESSION['id'])) {
+        // if (isset($_SESSION['id'])) {
+            if (isset($_SESSION['id']) && $_SESSION['role_id'] == 2) {
             Controller::rendertagViews("addtag");
         } else {
             Controller::render("login");

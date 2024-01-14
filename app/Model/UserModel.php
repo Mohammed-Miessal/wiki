@@ -23,8 +23,6 @@ class UserModel extends Crud
     }
 
 
-
-
     public function login($email)
     {
         try {
@@ -36,4 +34,19 @@ class UserModel extends Crud
             exit();
         }
     }
+
+
+    public function totalUsers()
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM user WHERE role_id = 1");
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Database Error: ' . $e->getMessage();
+            exit();
+        }
+    }
+
+    
 }

@@ -12,7 +12,7 @@ class EdittagController
     public function index($id)
     {
 
-        if (isset($_SESSION['id'])) {
+        if (isset($_SESSION['id']) && $_SESSION['role_id'] == 2) {
 
             $data = [
                 'id' => htmlspecialchars($id, ENT_QUOTES, 'UTF-8')

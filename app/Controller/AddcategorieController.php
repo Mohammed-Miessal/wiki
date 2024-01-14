@@ -12,7 +12,8 @@ class AddcategorieController
 {
     public function index()
     {
-        if (isset($_SESSION['id'])) {
+        // if (isset($_SESSION['id'])) {
+        if (isset($_SESSION['id']) && $_SESSION['role_id'] == 2) {
             Controller::rendercategorieViews("addcategorie");
         } else {
             Controller::render("login");

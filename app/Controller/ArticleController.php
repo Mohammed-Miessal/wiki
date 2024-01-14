@@ -10,9 +10,9 @@ class ArticleController
 
     public function show($id)
     {
-        if (isset($_SESSION['id'])) {
-            $data['id'] = $_SESSION['id'];
-        }
+        // if (isset($_SESSION['id'])) {
+        //     $data['id'] = $_SESSION['id'];
+        // }
 
         $wikis = new WikiModel();
         $wikiContent = $wikis->showcontent($id);

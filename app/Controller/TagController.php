@@ -13,7 +13,8 @@ class TagController
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        if (isset($_SESSION['id'])) {
+        // if (isset($_SESSION['id'])) {
+            if (isset($_SESSION['id']) && $_SESSION['role_id'] == 2) {
             $tags = new TagModel();
             $tags = $tags->readtags();
 
